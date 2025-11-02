@@ -13,4 +13,5 @@ runs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ inputs.ruby_version }} # fileで.ruby-versionを指定すると認識されなかった
+        rubygems: latest # hotfix: Rubyの標準ライブラリとGemfile.lockの不整合を解消
         bundler-cache: true # vendor/bundleを自動的にキャッシュ

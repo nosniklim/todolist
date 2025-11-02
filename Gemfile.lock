@@ -362,6 +362,7 @@ DEPENDENCIES
   ffi (~> 1.15)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mutex_m (>= 0.3.0)
   mysql2 (~> 0.5)
   net-protocol
   puma (~> 5.0)

@@ -11,9 +11,6 @@ runs:
     # Set up Ruby environment
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      env:
-        # hotfix: bundlerにRubyプラットフォームを強制
-        BUNDLE_FORCE_RUBY_PLATFORM: '1'
       with:
         ruby-version: ${{ inputs.ruby_version }} # fileで.ruby-versionを指定すると認識されなかった
         bundler-cache: true # vendor/bundleを自動的にキャッシュ

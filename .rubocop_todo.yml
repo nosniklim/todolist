@@ -173,3 +173,11 @@ Style/StringLiterals:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 154
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/initializers/new_framework_defaults_7_0.rb
+
+Layout/EmptyLines:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/initializers/new_framework_defaults_7_0.rb

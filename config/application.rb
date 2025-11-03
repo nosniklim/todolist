@@ -18,5 +18,8 @@ module RailsTodo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # FIXME: Rails7.0ではデフォルトでオートロードされるはずだが設定しないとlibが読み込まれない
+    config.autoload_paths += %W[#{config.root}/lib]
   end
 end

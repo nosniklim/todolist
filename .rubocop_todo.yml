@@ -159,6 +159,7 @@ Style/StringLiterals:
     - 'spec/rails_helper.rb'
     # NOTE: Railsが自動生成したファイルは除外
     - 'bin/rails'
+    - 'bin/rake'
     - 'bin/setup'
     - 'config/application.rb'
     - 'config/boot.rb'

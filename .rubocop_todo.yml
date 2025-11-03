@@ -183,3 +183,13 @@ Layout/EmptyLines:
   Exclude:
     # NOTE: Railsが自動生成したファイルは除外
     - config/initializers/new_framework_defaults_7_0.rb
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/environments/production.rb
+
+Style/RedundantConstantBase:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/environments/production.rb

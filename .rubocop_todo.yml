@@ -160,6 +160,7 @@ Style/StringLiterals:
     # NOTE: Railsが自動生成したファイルは除外
     - 'bin/rails'
     - 'bin/setup'
+    - 'config/application.rb'
     - 'config/boot.rb'
     - 'config/environment.rb'
     - 'config/environments/development.rb'

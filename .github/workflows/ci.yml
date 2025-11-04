@@ -35,6 +35,9 @@ jobs:
       - name: RuboCop
         run: bundle exec rubocop --format progress
 
+      - name: Run Zeitwerk check
+        run: bundle exec rails zeitwerk:check
+
       - name: ERB Lint
         if: hashFiles('**/*.erb') != ''
         run: bundle exec erblint --lint-all --format compact

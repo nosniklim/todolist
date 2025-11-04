@@ -39,8 +39,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       # CapybaraがSeleniumに接続するためのホスト名
       SELENIUM_HOST: selenium
-      # Railsのテスト環境を指定
-      RAILS_ENV: test
 
   selenium:
     image: selenium/standalone-chrome:3.141.59

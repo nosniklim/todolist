@@ -157,6 +157,18 @@ Style/StringLiterals:
     - 'spec/models/list_spec.rb'
     - 'spec/models/user_spec.rb'
     - 'spec/rails_helper.rb'
+    # NOTE: Railsが自動生成したファイルは除外
+    - 'bin/rails'
+    - 'bin/rake'
+    - 'bin/setup'
+    - 'config/application.rb'
+    - 'config/boot.rb'
+    - 'config/environment.rb'
+    - 'config/environments/development.rb'
+    - 'config/environments/production.rb'
+    - 'config/environments/test.rb'
+    - 'config/initializers/inflections.rb'
+    - 'config/initializers/assets.rb'
 
 # Offense count: 2
 # This cop supports safe auto-correction (--auto-correct).
@@ -164,3 +176,26 @@ Style/StringLiterals:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 154
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/initializers/new_framework_defaults_7_0.rb
+
+Layout/EmptyLines:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/initializers/new_framework_defaults_7_0.rb
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/environments/production.rb
+
+Style/RedundantConstantBase:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/environments/production.rb
+
+Style/SymbolArray:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/initializers/filter_parameter_logging.rb

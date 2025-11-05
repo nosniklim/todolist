@@ -9,7 +9,10 @@ Bundler.require(*Rails.groups)
 module RailsTodo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 7.0
+
+    # Set the cache format version to 7.0
+    config.active_support.cache_format_version = 7.0
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -18,5 +21,9 @@ module RailsTodo
     #
     # config.time_zone = "Central Time (US & Canada)"
     config.eager_load_paths << Rails.root.join("lib")
+
+    # NOTE: Rails7.0
+    # Disable deprecated #to_s override in Ruby core classes
+    config.active_support.disable_to_s_conversion = true
   end
 end

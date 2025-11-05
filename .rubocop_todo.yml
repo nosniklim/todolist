@@ -167,8 +167,9 @@ Style/StringLiterals:
     - 'config/environments/development.rb'
     - 'config/environments/production.rb'
     - 'config/environments/test.rb'
-    - 'config/initializers/inflections.rb'
     - 'config/initializers/assets.rb'
+    - 'config/initializers/inflections.rb'
+    - 'config/initializers/new_framework_defaults_7_0.rb'
 
 # Offense count: 2
 # This cop supports safe auto-correction (--auto-correct).

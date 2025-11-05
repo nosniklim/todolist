@@ -6,8 +6,8 @@ ToDoリスト管理ツール
 
 ## 使用技術
 
-- Ruby 2.6.3
-- Ruby on Rails 6.1.4
+- Ruby 3.0.7
+- Ruby on Rails 7.0.10
 - MySQL 8.0
 - Nginx
 - Puma
@@ -16,6 +16,7 @@ ToDoリスト管理ツール
 ### 品質保証・開発支援ツール
 
 - 静的解析: RuboCop、ERB Lint、ESLint、Stylelint、Prettier
+- 構成チェック: Zeitwerk
 - セキュリティチェック: Bundler Audit、Brakeman
 - テスト: RSpec（一部Unitテストは Minitest）
 - System spec: Capybara（Rack::Test / Selenium）
@@ -42,19 +43,19 @@ ToDoリスト管理ツール
 1. Dockerをビルド（初回のみ）
 
 ```
-$ docker compose build
+docker compose build
 ```
 
 2. コンテナ起動
 
 ```
-$ docker compose up
+docker compose up -d
 ```
 
 3. seedを実行
 
 ```
-$ docker compose exec app bin/rails db:seed
+docker compose exec app bin/rails db:seed
 ```
 
 4. ブラウザからアクセス
@@ -75,26 +76,35 @@ Password: guest#1
 #### Bash
 
 ```
-$ docker compose exec app bash
+docker compose exec app bash
 ```
 
 #### Console
 
 ```
-$ docker compose exec app bin/rails console
+docker compose exec app bin/rails console
+```
+
+#### MySQL
+
+```
+docker compose exec db bash
+mysql -u root  -p
 ```
 
 #### Testing
 
-- リストとタスクカードの並べ替え機能に関するUnitテスト（Minitest）
+```
+docker compose exec app rspec
+```
+
+リストとタスクカードの並べ替え機能に関するUnitテスト（Minitest）
 
 ```
-$ docker compose exec app bin/rails test
+docker compose exec app bin/rails test
 ```
 
 ### 今後の予定
 
-- RSpecを整備
-- Railsのバージョンアップ
-- CI/CD環境を整備
 - ReactによるSPA化
+- CI/CD環境を整備

@@ -41,6 +41,7 @@ Metrics/BlockLength:
   Max: 26
   Exclude:
     - 'config/environments/development.rb'
+    - 'spec/models/*_spec.rb'
     - 'spec/requests/*_spec.rb'
     - 'spec/system/**/*_spec.rb'
 

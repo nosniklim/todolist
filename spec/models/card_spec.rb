@@ -23,4 +23,15 @@ RSpec.describe Card, type: :model do
       it { is_expected.to be_truthy }
     end
   end
+
+  describe 'database encoding' do
+    it 'saves 4-byte chars' do
+      described_instance.title = 'Card🪪'
+      described_instance.memo = 'Memo📝'
+      described_instance.save
+      card = Card.find(described_instance.id)
+      expect(card.title).to eq('Card🪪')
+      expect(card.memo).to eq('Memo📝')
+    end
+  end
 end

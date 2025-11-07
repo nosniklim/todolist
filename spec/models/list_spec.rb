@@ -23,4 +23,12 @@ RSpec.describe List, type: :model do
       it { is_expected.to be_truthy }
     end
   end
+
+  describe 'database encoding' do
+    it 'saves 4-byte chars' do
+      described_instance.title = 'List🔖'
+      described_instance.save
+      expect(List.find(described_instance.id).title).to eq('List🔖')
+    end
+  end
 end

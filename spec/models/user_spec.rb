@@ -29,4 +29,12 @@ RSpec.describe User, type: :model do
       it { is_expected.to be_truthy }
     end
   end
+
+  describe 'database encoding' do
+    it 'saves 4-byte chars' do
+      described_instance.name = 'User😊'
+      described_instance.save
+      expect(User.find(described_instance.id).name).to eq('User😊')
+    end
+  end
 end

@@ -21,9 +21,5 @@ module RailsTodo
     #
     # config.time_zone = "Central Time (US & Canada)"
     config.eager_load_paths << Rails.root.join("lib")
-
-    # NOTE: Rails7.0
-    # Disable deprecated #to_s override in Ruby core classes
-    config.active_support.disable_to_s_conversion = true
   end
 end

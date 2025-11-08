@@ -201,3 +201,13 @@ Style/SymbolArray:
   Exclude:
     # NOTE: Railsが自動生成したファイルは除外
     - config/initializers/filter_parameter_logging.rb
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/application.rb
+
+Layout/MultilineMethodCallIndentation:
+  Exclude:
+    # NOTE: Railsが自動生成したファイルは除外
+    - config/environments/production.rb

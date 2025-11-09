@@ -25,5 +25,8 @@ module RailsTodo
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
+
+    # NOTE: Rails7.1
+    config.add_autoload_paths_to_load_path = false
   end
 end

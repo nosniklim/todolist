@@ -386,7 +386,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootsnap (>= 1.4.4)
+  bootsnap (~> 1.18.6)
   brakeman
   bullet
   bundler-audit

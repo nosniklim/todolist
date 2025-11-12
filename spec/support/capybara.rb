@@ -27,7 +27,7 @@ RSpec.configure do |config|
 
   config.after(:each, type: :system) do |example|
     # CIかSAVE_FAILURE_ARTIFACTSを明示した場合のみ保存
-    if example.exception && (ENV['CI'] || ENV['SAVE_FAILURE_ARTIFACTS'])
+    if example.exception && (ENV['CI'] || ENV.fetch('SAVE_FAILURE_ARTIFACTS', nil))
       FileUtils.mkdir_p('tmp/capybara')
       timestamp = Time.current.strftime('%Y%m%d-%H%M%S')
       base_path = "#{example.full_description.parameterize}-#{timestamp}"

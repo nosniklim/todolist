@@ -25,8 +25,9 @@
 /public/assets
 .byebug_history
 
-# Ignore master key for decrypting credentials and more
+# Ignore credentials keys (master key and per-environment keys)
 /config/master.key
+/config/credentials/*.key
 
 /public/packs
 /public/packs-test
@@ -37,5 +38,3 @@ yarn-debug.log*
 
 coverage
 .env
-
-/config/credentials/test.key

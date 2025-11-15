@@ -9,10 +9,15 @@ Bundler.require(*Rails.groups)
 module RailsTodo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
-    # Set the cache format version to 7.0
-    config.active_support.cache_format_version = 7.0
+    # Set the cache format version
+    config.active_support.cache_format_version = 7.1
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(assets tasks))
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -20,10 +25,8 @@ module RailsTodo
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    config.eager_load_paths << Rails.root.join("lib")
 
-    # NOTE: Rails7.0
-    # Disable deprecated #to_s override in Ruby core classes
-    config.active_support.disable_to_s_conversion = true
+    # NOTE: Rails7.1
+    config.add_autoload_paths_to_load_path = false
   end
 end

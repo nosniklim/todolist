@@ -26,12 +26,16 @@ RSpec.configure do |config|
   config.before(:each, type: :system, js: true) { driven_by :selenium_remote_chrome }
 
   config.after(:each, type: :system) do |example|
-    if example.exception
+    # CIかSAVE_FAILURE_ARTIFACTSを明示した場合のみ保存
+    if example.exception && (ENV['CI'] || ENV.fetch('SAVE_FAILURE_ARTIFACTS', nil))
       FileUtils.mkdir_p('tmp/capybara')
       timestamp = Time.current.strftime('%Y%m%d-%H%M%S')
       base_path = "#{example.full_description.parameterize}-#{timestamp}"
+      # CIのデバッグ用なのでRuboCopを無効化
+      # rubocop:disable Lint/Debugger
       page.save_screenshot("#{base_path}.png", full: true)
       save_page("#{base_path}.html")
+      # rubocop:enable Lint/Debugger
     end
   end
 end

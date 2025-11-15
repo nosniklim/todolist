@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.0.10'
+gem 'rails', '~> 7.1.6'
 # Use mysql2 as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -29,7 +29,7 @@ gem 'ffi', '~> 1.15'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', '~> 1.18.6', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

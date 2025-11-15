@@ -41,9 +41,6 @@ jobs:
       - name: ERB Lint
         if: hashFiles('**/*.erb') != ''
         run: bundle exec erblint --lint-all --format compact
-        # hotfix: bundle updateに伴うlogger読み込みエラー対策
-        env:
-          RUBYOPT: '-rbundler/setup -rlogger'
 
       - name: ESLint
         if: ${{ hashFiles('app/javascript/**/*.{js,jsx}') != '' }}

@@ -217,9 +217,3 @@ Style/IfUnlessModifier:
   Exclude:
     # NOTE: Railsが自動生成したファイルは除外
     - config/initializers/new_framework_defaults_7_1.rb
-
-# TODO: Rails7.1にアップグレード後にrubocop-railsをバージョンアップして問題なければ削除する
-Rails/UnknownEnv:
-  Exclude:
-    # NOTE: Railsが自動生成したファイルは除外
-    - config/initializers/new_framework_defaults_7_1.rb

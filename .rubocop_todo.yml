@@ -217,3 +217,10 @@ Style/IfUnlessModifier:
   Exclude:
     # NOTE: Railsが自動生成したファイルは除外
     - config/initializers/new_framework_defaults_7_1.rb
+
+# TODO: 並べ替え機能をリプレースして問題なければ削除する
+Rails/FindEach:
+  Exclude:
+    - lib/utility_methods.rb
+    - test/models/card_test.rb
+    - test/models/list_test.rb

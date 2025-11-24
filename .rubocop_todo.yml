@@ -172,6 +172,7 @@ Style/StringLiterals:
     - 'config/initializers/inflections.rb'
     - 'config/initializers/new_framework_defaults_7_0.rb'
     - 'config/initializers/new_framework_defaults_7_1.rb'
+    - 'config/puma.rb'
 
 # Offense count: 2
 # This cop supports safe auto-correction (--auto-correct).

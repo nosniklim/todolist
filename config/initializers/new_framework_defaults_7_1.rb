@@ -35,7 +35,8 @@ Rails.application.config.action_dispatch.default_headers = {
 # Do not treat an `ActionController::Parameters` instance
 # as equal to an equivalent `Hash` by default.
 #++
-Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality = false
+# NOTE: Rails7.2で非推奨となったので設定を削除
+# Rails.application.config.action_controller.allow_deprecated_parameters_hash_equality = false
 
 ###
 # Active Record Encryption now uses SHA-256 as its hash digest algorithm.
@@ -81,7 +82,8 @@ Rails.application.config.active_record.sqlite3_adapter_strict_strings_by_default
 ###
 # Disable deprecated singular associations names.
 #++
-Rails.application.config.active_record.allow_deprecated_singular_associations_name = false
+# NOTE: Rails7.2で非推奨となったので設定を削除
+# Rails.application.config.active_record.allow_deprecated_singular_associations_name = false
 
 ###
 # Enable the Active Job `BigDecimal` argument serializer, which guarantees
@@ -93,7 +95,8 @@ Rails.application.config.active_record.allow_deprecated_singular_associations_na
 # serializer. Therefore, this setting should only be enabled after all replicas
 # have been successfully upgraded to Rails 7.1.
 #++
-Rails.application.config.active_job.use_big_decimal_serializer = true
+# NOTE: Rails7.2で非推奨となったので設定を削除
+# Rails.application.config.active_job.use_big_decimal_serializer = true
 
 ###
 # Specify if an `ArgumentError` should be raised if `Rails.cache` `fetch` or
@@ -223,7 +226,8 @@ Rails.application.config.active_record.run_after_transaction_callbacks_in_order_
 # Whether a `transaction` block is committed or rolled back when exited via `return`, `break` or `throw`.
 #++
 # NOTE: トランザクションブロック内でreturn等により抜けた場合にコミットされるようになった
-Rails.application.config.active_record.commit_transaction_on_non_local_return = true
+# NOTE: Rails7.2で非推奨となったので設定を削除
+# Rails.application.config.active_record.commit_transaction_on_non_local_return = true
 
 ###
 # Controls when to generate a value for <tt>has_secure_token</tt> declarations.

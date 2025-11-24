@@ -20,6 +20,7 @@
 # Any libraries that use a connection pool or another resource pool should
 # be configured to provide at least as many connections as the number of
 # threads. This includes Active Record's `pool` parameter in `database.yml`.
+# TODO: Rails7.2でデフォルトが3になった（本番環境で同時リクエスト耐性を上げる場合は見直しが必要）
 threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
 threads threads_count, threads_count
 

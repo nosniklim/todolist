@@ -80,3 +80,5 @@ gem 'rubocop-rails', '~> 2.22.0', require: false
 gem 'net-protocol'
 
 gem "jsbundling-rails", "~> 1.3"
+
+gem "cssbundling-rails", "~> 1.4"

@@ -154,17 +154,6 @@ jobs:
           cp config/database.yml.ci config/database.yml
           bin/rails db:prepare
 
-      # hotfix: CI環境でコンパイルエラーになるためRails7.1に上げるまでWebpackerのダミーアセットを追加する
-      - name: Prepare dummy Webpacker assets
-        run: |
-          mkdir -p public/packs-test/js
-          : > public/packs-test/js/application.js
-          cat > public/packs-test/manifest.json <<'JSON'
-          {
-            "application.js": "/packs-test/js/application.js"
-          }
-          JSON
-
       # 並べ替え機能はMinitestでも検証しているため、補助的にMinitestも実行する
       - name: Run Minitest
         if: ${{ hashFiles('test/**/*') != '' }}

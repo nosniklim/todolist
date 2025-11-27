@@ -45,15 +45,19 @@ RUN set -eux; \
  # FIXME: 依存関係を解決するためruby2.6.3で使用していた1.22.22を指定（Rubyバージョンアップ時に見直し）
  RUN npm i -g yarn@1.22.22
 
-# Google Chromeをインストール
+# Google Chromeをインストール（amd64はgoogle-chrome、その他はChromiumを使用）
 RUN set -eux; \
   install -m 0755 -d /etc/apt/keyrings; \
-  curl -fsSL https://dl.google.com/linux/linux_signing_key.pub \
-    | gpg --dearmor -o /etc/apt/keyrings/google.gpg; \
-  chmod a+r /etc/apt/keyrings/google.gpg; \
-  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] https://dl.google.com/linux/chrome/deb/ stable main" \
-    > /etc/apt/sources.list.d/google-chrome.list; \
-  apt-get update -qq && apt-get install -y --no-install-recommends google-chrome-stable; \
+  arch=$(dpkg --print-architecture); \
+  if [ "$arch" = "amd64" ]; then \
+    curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /etc/apt/keyrings/google.gpg; \
+    chmod a+r /etc/apt/keyrings/google.gpg; \
+    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.gpg] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list; \
+    apt-get update -qq && apt-get install -y --no-install-recommends google-chrome-stable; \
+  else \
+    # ARM (Apple Silicon / M-series) 向けに Chromium をインストール
+    apt-get update -qq && apt-get install -y --no-install-recommends chromium; \
+  fi; \
   rm -rf /var/lib/apt/lists/*
 
 # hotfix: Bundlerのバージョンを固定してインストール

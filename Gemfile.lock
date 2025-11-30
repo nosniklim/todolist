@@ -329,6 +329,14 @@ GEM
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     spring (4.3.0)
+    sprockets (4.2.2)
+      concurrent-ruby (~> 1.0)
+      logger
+      rack (>= 2.2.4, < 4)
+    sprockets-rails (3.5.2)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      sprockets (>= 3.0.0)
     stringio (3.1.8)
     thor (1.4.0)
     timeout (0.4.4)
@@ -394,6 +402,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   spring
+  sprockets-rails
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

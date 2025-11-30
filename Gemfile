@@ -9,10 +9,8 @@ gem 'rails', '~> 7.2.3'
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 6.0'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
+# Use Sprockets for the Rails asset pipeline
+gem 'sprockets-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -80,3 +78,7 @@ gem 'rubocop-rails', '~> 2.22.0', require: false
 
 # NOTE: Ruby2.7では標準ライブラリに含まれるが、Ruby3.1以降で標準ライブラリから分離されるので、将来的な互換性を考慮して明示的に追加
 gem 'net-protocol'
+
+# JS/CSS bundling
+gem 'jsbundling-rails', '~> 1.3'
+gem 'cssbundling-rails', '~> 1.4'

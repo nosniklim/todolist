@@ -11,9 +11,10 @@
     "bootstrap": "^5.0.2",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+    "sass": "^1.94.2",
     "turbolinks": "^5.2.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.103.0",
+    "webpack-cli": "^6.0.1"
   },
   "version": "0.1.0",
   "type": "module",
@@ -43,6 +44,8 @@
     "lint:css": "stylelint 'app/{assets,javascript}/stylesheets/**/*.{css,scss}'",
     "lint:css:fix": "stylelint 'app/{assets,javascript}/stylesheets/**/*.{css,scss}' --fix",
     "fmt:check": "prettier --check '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'",
-    "fmt:check:fix": "prettier --write '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'"
+    "fmt:check:fix": "prettier --write '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'",
+    "build": "webpack --config webpack.config.cjs",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

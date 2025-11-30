@@ -1,6 +1,6 @@
+// Entry point for the build script in your package.json
 import 'bootstrap';
-import '../stylesheets/application';
-import '@fortawesome/fontawesome-free/js/all';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -10,7 +10,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import Rails from '@rails/ujs';
 import Turbolinks from 'turbolinks';
 import * as ActiveStorage from '@rails/activestorage';
-import 'channels';
+import './channels/index.js';
 
 Rails.start();
 Turbolinks.start();

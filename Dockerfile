@@ -74,6 +74,8 @@ WORKDIR /app
 # ビルド時にGemをインストール
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+# nokogiriをsystem-librariesでビルド
+RUN bundle config set build.nokogiri --use-system-libraries
 RUN bundle install
 
 # ホストのソースコードをDockerにコピー

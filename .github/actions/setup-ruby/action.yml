@@ -10,6 +10,7 @@ runs:
   steps:
     # nokogiriのビルド用依存パッケージをインストール
     - name: Install build tools for nokogiri
+      shell: bash 
       run: |
         sudo apt-get update -qq
         sudo apt-get install -y --no-install-recommends build-essential patch

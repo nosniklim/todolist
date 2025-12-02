@@ -17,7 +17,10 @@ runs:
           build-essential \
           patch \
           zlib1g-dev \
-          liblzma-dev
+          liblzma-dev \
+          pkg-config \
+          libxml2-dev \
+          libxslt-dev
 
     # Set up Ruby environment
     - name: Set up Ruby

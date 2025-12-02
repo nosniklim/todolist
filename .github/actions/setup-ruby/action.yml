@@ -10,7 +10,7 @@ runs:
   steps:
     # nokogiriのビルド用依存パッケージをインストール
     - name: Install build tools for nokogiri
-      shell: bash 
+      shell: bash
       run: |
         sudo apt-get update -qq
         sudo apt-get install -y --no-install-recommends \
@@ -29,7 +29,7 @@ runs:
         # hotfix: bundlerにRubyプラットフォームを強制
         BUNDLE_FORCE_RUBY_PLATFORM: '1'
         # hotfix: nokogiriはsystem-librariesでビルド
-        BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries"
+        BUNDLE_BUILD__NOKOGIRI: '--use-system-libraries'
       with:
         ruby-version: ${{ inputs.ruby_version }} # fileで.ruby-versionを指定すると認識されなかった
         bundler-cache: true # vendor/bundleを自動的にキャッシュ

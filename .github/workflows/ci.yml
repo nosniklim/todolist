@@ -70,7 +70,7 @@ jobs:
         run: bundle exec brakeman -q -w2 || true
 
       - name: Bundler Audit
-        run: bundle exec bundler-audit check --update || true
+        run: bundle exec bundler-audit check --update
 
   # ---- Smoke Tests ----
   smoke:

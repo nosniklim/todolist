@@ -67,7 +67,7 @@ jobs:
 
       # SAST
       - name: Brakeman # 警告レベル2以上（Medium）
-        run: bundle exec brakeman -q -w2 || true
+        run: bundle exec brakeman -q -w2
 
       - name: Bundler Audit
         run: bundle exec bundler-audit check --update

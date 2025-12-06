@@ -77,7 +77,7 @@ RSpec.describe 'Lists: Edit', type: :system do
       click_button 'Save'
 
       # 失敗（編集画面に留まる）
-      expect(page).to have_current_path(edit_list_path(list3))
+      expect(page).to have_current_path(list_path(list3)) # PATCH path (not /edit)
 
       # エラーメッセージ
       # TODO: [data-testid="form-error"], [data-testid="flash"]

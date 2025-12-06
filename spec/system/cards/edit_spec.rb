@@ -119,7 +119,7 @@ RSpec.describe 'Cards: Edit', type: :system do
       click_button 'Save'
 
       # 失敗（編集画面に留まる）
-      expect(page).to have_current_path(edit_list_card_path(list_a, card_a1))
+      expect(page).to have_current_path(list_card_path(list_a, card_a1)) # PATCH path
 
       # エラーメッセージ
       # TODO: [data-testid="form-error"], [data-testid="flash"]

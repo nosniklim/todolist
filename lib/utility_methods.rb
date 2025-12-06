@@ -3,8 +3,7 @@ module UtilityMethods
     # get original params
     @position_was = position
     @list_id_was = list_id if instance_of?(Card)
-    # update
-    result = update(params) ? true : errors
+    result = update(params)
     # get updated params
     @position = position
     @target_id = id
@@ -21,8 +20,8 @@ module UtilityMethods
       @list_id_was = list_id
       @list_id = list_id
     end
-    # destroy
-    result = destroy ? true : errors
+    destroy
+    result = destroyed?
     change_order if result
     result
   end

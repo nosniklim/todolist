@@ -9,8 +9,8 @@ class CardController < ApplicationController
   end
 
   def edit
-    @lists = List.where(user: current_user).select(:id, :title)
-    @positions = Card.where(list_id: @card.list_id).select('position as `key`, position as value').order(:position)
+    set_list
+    set_positions
   end
 
   def create
@@ -27,6 +27,8 @@ class CardController < ApplicationController
     if @card.update_with_sort(card_params)
       redirect_to :root
     else
+      set_list
+      set_positions
       render action: :edit
     end
   end
@@ -48,7 +50,15 @@ class CardController < ApplicationController
     end
   end
 
+  def set_list
+    @lists = List.where(user: current_user).select(:id, :title)
+  end
+
   def set_card
     @card = Card.find_by(id: params[:id])
+  end
+
+  def set_positions 
+    @positions = Card.where(list_id: @card.list_id).select('position as `key`, position as value').order(:position)
   end
 end

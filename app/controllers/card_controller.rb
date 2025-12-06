@@ -58,7 +58,7 @@ class CardController < ApplicationController
     @card = Card.find_by(id: params[:id])
   end
 
-  def set_positions 
+  def set_positions
     @positions = Card.where(list_id: @card.list_id).select('position as `key`, position as value').order(:position)
   end
 end

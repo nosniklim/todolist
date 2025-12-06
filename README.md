@@ -6,8 +6,8 @@ ToDoリスト管理ツール
 
 ## 使用技術
 
-- Ruby on Rails 7.0.10
 - Ruby 3.1.7
+- Ruby on Rails 7.2.3
 - MySQL 8.0
 - Nginx
 - Puma

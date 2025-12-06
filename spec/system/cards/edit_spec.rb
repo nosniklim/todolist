@@ -113,7 +113,6 @@ RSpec.describe 'Cards: Edit', type: :system do
 
   describe '更新失敗' do
     it 'タイトル未入力で保存すると、入力値を保持して同画面を再表示' do
-      pending 'FIXME: 更新失敗時に編集画面を再描画するようにする'
       visit edit_list_card_path(list_a, card_a1)
       card_form.fill_title('')
       card_form.fill_memo('keep me')

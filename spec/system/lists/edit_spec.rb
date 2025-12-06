@@ -70,7 +70,6 @@ RSpec.describe 'Lists: Edit', type: :system do
 
   describe '更新失敗' do
     it 'タイトル未入力で保存すると、入力値を保持して同画面を再表示' do
-      pending 'FIXME: 更新失敗時に編集画面を再描画するようにする'
       visit edit_list_path(list3)
       # positionを1に変更（失敗時に入力値が保持されることを確認）
       list_form.fill_title('')

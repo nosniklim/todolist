@@ -55,6 +55,7 @@ group :development do
   gem 'brakeman', require: false
   gem 'bundler-audit', require: false
   gem 'erb_lint', '~> 0.1.3', require: false # hotfix: 依存関係を解決するためバージョン固定 # NOTE: slimへの移行を検討
+  gem 'annotate', require: false
 end
 
 group :test do

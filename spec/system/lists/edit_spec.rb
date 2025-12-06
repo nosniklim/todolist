@@ -81,7 +81,7 @@ RSpec.describe 'Lists: Edit', type: :system do
 
       # エラーメッセージ
       # TODO: [data-testid="form-error"], [data-testid="flash"]
-      expect(page).to have_selector('.alert.alert-danger')
+      expect(page).to have_selector('.text-danger')
 
       # 入力保持の確認
       expect(page).to have_field('Title', with: '')

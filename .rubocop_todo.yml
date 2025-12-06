@@ -41,6 +41,7 @@ Metrics/BlockLength:
   Max: 26
   Exclude:
     - 'config/environments/development.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
     - 'spec/models/*_spec.rb'
     - 'spec/requests/*_spec.rb'
     - 'spec/system/**/*_spec.rb'
@@ -225,3 +226,11 @@ Rails/FindEach:
     - lib/utility_methods.rb
     - test/models/card_test.rb
     - test/models/list_test.rb
+
+Rails/RakeEnvironment:
+  Exclude:
+    - lib/tasks/auto_annotate_models.rake
+
+Layout/HashAlignment:
+  Exclude:
+    - lib/tasks/auto_annotate_models.rake

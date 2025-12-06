@@ -70,7 +70,6 @@ RSpec.describe 'Lists: Edit', type: :system do
 
   describe '更新失敗' do
     it 'タイトル未入力で保存すると、入力値を保持して同画面を再表示' do
-      pending 'FIXME: 更新失敗時に編集画面を再描画するようにする'
       visit edit_list_path(list3)
       # positionを1に変更（失敗時に入力値が保持されることを確認）
       list_form.fill_title('')
@@ -78,11 +77,11 @@ RSpec.describe 'Lists: Edit', type: :system do
       click_button 'Save'
 
       # 失敗（編集画面に留まる）
-      expect(page).to have_current_path(edit_list_path(list3))
+      expect(page).to have_current_path(list_path(list3)) # PATCH path (not /edit)
 
       # エラーメッセージ
       # TODO: [data-testid="form-error"], [data-testid="flash"]
-      expect(page).to have_selector('.alert.alert-danger')
+      expect(page).to have_selector('.text-danger')
 
       # 入力保持の確認
       expect(page).to have_field('Title', with: '')

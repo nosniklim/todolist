@@ -37,7 +37,6 @@ RSpec.describe 'Cards', type: :request do
       let(:invalid_params) { { card: { title: '' } } }
 
       it 'カードを更新せず、編集画面を再表示する' do
-        pending 'FIXME: 更新失敗時に編集画面を再描画するようにする'
         patch list_card_path(list_id: list.id, id: card.id), params: invalid_params
         expect(card.reload.title).not_to eq('')
         expect(response).to render_template(:edit)

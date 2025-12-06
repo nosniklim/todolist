@@ -6,7 +6,7 @@ class ListController < ApplicationController
   end
 
   def edit
-    @positions = List.where(user_id: current_user).select('position as `key`, position as value').order(:position)
+    set_positions
   end
 
   def create
@@ -22,6 +22,7 @@ class ListController < ApplicationController
     if @list.update_with_sort(list_params)
       redirect_to :root
     else
+      set_positions
       render action: :edit
     end
   end
@@ -45,5 +46,9 @@ class ListController < ApplicationController
 
   def set_list
     @list = List.find_by(id: params[:id])
+  end
+
+  def set_positions
+    @positions = List.where(user_id: current_user).select('position as `key`, position as value').order(:position)
   end
 end

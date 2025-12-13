@@ -36,7 +36,7 @@ group :development, :test do
   # Testing
   gem 'rspec-rails'
   # hotfix: 依存関係を解決するためバージョンを固定
-  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'factory_bot_rails', '~> 6.5.1'
   gem 'rails-controller-testing'
   gem 'bullet'
 end

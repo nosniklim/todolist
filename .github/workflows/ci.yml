@@ -9,10 +9,10 @@ on:
 
 env:
   RAILS_ENV: test
-  DB_HOST: ${{ secrets.DB_HOST }}
-  DB_USERNAME: ${{ secrets.DB_USERNAME }}
-  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-  DB_NAME_TEST: ${{ secrets.DB_NAME_TEST }}
+  DB_HOST: ${{ vars.DB_HOST }}
+  DB_USERNAME: ${{ vars.DB_USERNAME }}
+  DB_PASSWORD: ${{ vars.DB_PASSWORD }}
+  DB_NAME_TEST: ${{ vars.DB_NAME_TEST }}
 
 jobs:
   # ---- Lint ----
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Ruby
         uses: ./.github/actions/setup-ruby
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Ruby
         uses: ./.github/actions/setup-ruby
@@ -79,7 +79,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Ruby
         uses: ./.github/actions/setup-ruby
@@ -126,7 +126,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Ruby
         uses: ./.github/actions/setup-ruby
@@ -167,7 +167,7 @@ jobs:
 
       - name: Upload coverage report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: coverage-html
           path: coverage

@@ -384,7 +384,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   cssbundling-rails (~> 1.4)
   devise
-  erb_lint (~> 0.9.0)
+  erb_lint
   factory_bot_rails (~> 6.5.1)
   faker
   ffi (~> 1.15)

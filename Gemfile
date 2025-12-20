@@ -8,7 +8,7 @@ gem 'rails', '~> 7.2.3'
 # Use mysql2 as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
-gem 'puma', '~> 6.0'
+gem 'puma', '~> 7.1'
 # Use Sprockets for the Rails asset pipeline
 gem 'sprockets-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

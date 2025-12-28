@@ -1,0 +1,42 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/lists":
+    get:
+      summary: lists index
+      tags:
+      - Lists
+      responses:
+        '200':
+          description: ok
+  "/api/v1/lists/reorder":
+    patch:
+      summary: reorder lists
+      tags:
+      - Lists
+      parameters: []
+      responses:
+        '200':
+          description: ok
+        '422':
+          description: invalid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - list_ids
+              properties:
+                list_ids:
+                  type: array
+                  items:
+                    type: integer
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

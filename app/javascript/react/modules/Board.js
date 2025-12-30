@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 function Card({ listId, card }) {
   return (
@@ -23,7 +23,11 @@ function ListLane({ lists }) {
           <div class="list_header">
             <h2 class="list_header_title">{list.title}</h2>
             <div class="list_header_action">
-              <a href={`/lists/${list.id}`} data-method="delete" data-confirm={`Are you sure you want to remove '${list.title}'?`}>
+              <a
+                href={`/lists/${list.id}`}
+                data-method="delete"
+                data-confirm={`Are you sure you want to remove '${list.title}'?`}
+              >
                 <i className="fas fa-trash" />
               </a>
               <a href={`/lists/${list.id}/edit`}>
@@ -52,13 +56,11 @@ export default function Board() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    fetch("/api/v1/lists", { credentials: "include" })
+    fetch('/api/v1/lists', { credentials: 'include' })
       .then((r) => r.json())
       .then((data) => setLists(data.lists || []))
       .catch(console.error);
   }, []);
 
-  return (
-    <ListLane lists={lists} />
-  );
+  return <ListLane lists={lists} />;
 }

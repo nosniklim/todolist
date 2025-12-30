@@ -47,7 +47,7 @@
     "lint:css:fix": "stylelint 'app/{assets,javascript}/stylesheets/**/*.{css,scss}' --fix",
     "fmt:check": "prettier --check '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'",
     "fmt:check:fix": "prettier --write '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

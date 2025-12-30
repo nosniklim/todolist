@@ -43,7 +43,7 @@ Metrics/BlockLength:
     - 'config/environments/development.rb'
     - 'lib/tasks/auto_annotate_models.rake'
     - 'spec/models/*_spec.rb'
-    - 'spec/requests/*_spec.rb'
+    - 'spec/requests/**/*_spec.rb'
     - 'spec/system/**/*_spec.rb'
 
 # Offense count: 2
@@ -121,6 +121,7 @@ Style/BlockComments:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
+    - 'app/controllers/**/*'
     - 'test/channels/application_cable/connection_test.rb'
     - 'test/test_helper.rb'
 

@@ -4,19 +4,61 @@ info:
   title: API V1
   version: v1
 paths:
-  '/api/v1/lists':
+  "/api/v1/board":
     get:
-      summary: lists index
+      summary: Get board collection (lists with cards)
       tags:
-        - Lists
+      - Board
       responses:
         '200':
-          description: ok
-  '/api/v1/lists/reorder':
+          description: board data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lists:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - id
+                      - title
+                      - position
+                      - cards
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        position:
+                          type: integer
+                        cards:
+                          type: array
+                          items:
+                            type: object
+                            required:
+                            - id
+                            - title
+                            - memo
+                            - position
+                            properties:
+                              id:
+                                type: integer
+                              title:
+                                type: string
+                              memo:
+                                type: string
+                                nullable: true
+                              position:
+                                type: integer
+        '401':
+          description: unauthorized
+  "/api/v1/lists/reorder":
     patch:
       summary: reorder lists
       tags:
-        - Lists
+      - Lists
       parameters: []
       responses:
         '200':
@@ -29,14 +71,14 @@ paths:
             schema:
               type: object
               required:
-                - list_ids
+              - list_ids
               properties:
                 list_ids:
                   type: array
                   items:
                     type: integer
 servers:
-  - url: https://{defaultHost}
-    variables:
-      defaultHost:
-        default: www.example.com
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

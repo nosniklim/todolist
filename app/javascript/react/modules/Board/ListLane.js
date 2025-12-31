@@ -10,13 +10,13 @@ export default function ListLane({ lists }) {
             <h2 className="list_header_title">{list.title}</h2>
             <div className="list_header_action">
               <a
-                href={`/lists/${list.id}`}
+                href={`/list/${list.id}`}
                 data-method="delete"
                 data-confirm={`Are you sure you want to remove '${list.title}'?`}
               >
                 <i className="fas fa-trash" />
               </a>
-              <a href={`/lists/${list.id}/edit`}>
+              <a href={`/list/${list.id}/edit`}>
                 <i className="fas fa-pen" />
               </a>
             </div>
@@ -27,7 +27,7 @@ export default function ListLane({ lists }) {
             ))}
             <div className="addCard">
               <i className="far fa-plus-square"></i>
-              <a href={`/lists/${list.id}/cards/new`} className="addCard_link">
+              <a href={`/list/${list.id}/card/new`} className="addCard_link">
                 Add a card...
               </a>
             </div>

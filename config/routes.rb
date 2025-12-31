@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => '/api-docs'
   namespace :api do
     namespace :v1 do
-      resources :lists, only: [:index] do
-        collection do
-          patch :reorder
-        end
+      get 'board', to: 'board#show'
+      namespace :lists do
+        patch :reorder
       end
     end
   end

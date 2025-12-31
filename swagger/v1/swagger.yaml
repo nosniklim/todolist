@@ -4,11 +4,11 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/board":
+  '/api/v1/board':
     get:
       summary: Get board collection (lists with cards)
       tags:
-      - Board
+        - Board
       responses:
         '200':
           description: board data
@@ -22,10 +22,10 @@ paths:
                     items:
                       type: object
                       required:
-                      - id
-                      - title
-                      - position
-                      - cards
+                        - id
+                        - title
+                        - position
+                        - cards
                       properties:
                         id:
                           type: integer
@@ -38,10 +38,10 @@ paths:
                           items:
                             type: object
                             required:
-                            - id
-                            - title
-                            - memo
-                            - position
+                              - id
+                              - title
+                              - memo
+                              - position
                             properties:
                               id:
                                 type: integer
@@ -54,11 +54,11 @@ paths:
                                 type: integer
         '401':
           description: unauthorized
-  "/api/v1/lists/reorder":
+  '/api/v1/lists/reorder':
     patch:
       summary: reorder lists
       tags:
-      - Lists
+        - Lists
       parameters: []
       responses:
         '200':
@@ -71,14 +71,14 @@ paths:
             schema:
               type: object
               required:
-              - list_ids
+                - list_ids
               properties:
                 list_ids:
                   type: array
                   items:
                     type: integer
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+  - url: https://{defaultHost}
+    variables:
+      defaultHost:
+        default: www.example.com

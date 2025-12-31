@@ -1,13 +1,6 @@
 class Api::V1::ListsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    lists = current_user.lists.order(:position)
-    render json: {
-      lists: lists.as_json(only: %i[id title position])
-    }
-  end
-
   def reorder
     list_ids = params.require(:list_ids)
     allowed_ids = current_user.lists.where(id: list_ids).ids

@@ -7,17 +7,6 @@ RSpec.describe 'Api::V1::Lists', type: :request do
 
   before { sign_in user }
 
-  path '/api/v1/lists' do
-    get 'lists index' do
-      tags 'Lists'
-      produces 'application/json'
-
-      response '200', 'ok' do
-        run_test!
-      end
-    end
-  end
-
   path '/api/v1/lists/reorder' do
     patch 'reorder lists' do
       tags 'Lists'

@@ -19,7 +19,7 @@ Capybara.register_driver :selenium_remote_chrome do |app|
   # chrome_options.add_argument('--remote-debugging-port=9222')
   Capybara::Selenium::Driver.new(app,
                                  browser: :remote,
-                                 url: "http://#{ENV.fetch('SELENIUM_HOST', 'localhost')}:4444/wd/hub",
+                                 url: "http://#{ENV.fetch('SELENIUM_HOST', 'selenium')}:4444/wd/hub",
                                  options: chrome_options)
 end
 

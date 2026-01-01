@@ -42,7 +42,7 @@ services:
   selenium:
     # FIXME: arm64環境のイメージに更新するまでplatformを指定して警告を回避
     platform: linux/amd64
-    image: selenium/standalone-chrome:143.0-20251212
+    image: selenium/standalone-chrome:142.0-20251212
     shm_size: 2gb
     ports:
       - '4444:4444' # Seleniumのデフォルトポート

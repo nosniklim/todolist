@@ -10,11 +10,11 @@ Capybara.save_path = 'tmp/capybara'
 # Seleniumの設定を登録
 Capybara.register_driver :selenium_remote_chrome do |app|
   chrome_options = Selenium::WebDriver::Chrome::Options.new
-  chrome_options.add_argument('headless')
-  chrome_options.add_argument('disable-gpu')
-  chrome_options.add_argument('no-sandbox')
-  chrome_options.add_argument('disable-dev-shm-usage')
-  chrome_options.add_argument('window-size=1920,1080')
+  chrome_options.add_argument('--headless')
+  chrome_options.add_argument('--disable-gpu')
+  chrome_options.add_argument('--no-sandbox')
+  chrome_options.add_argument('--disable-dev-shm-usage')
+  chrome_options.add_argument('--window-size=1920,1080')
   Capybara::Selenium::Driver.new(app,
                                  browser: :remote,
                                  url: "http://#{ENV.fetch('SELENIUM_HOST', 'localhost')}:4444/wd/hub",

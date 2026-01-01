@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'capybara'
+require 'selenium/webdriver'
 
 Capybara.default_max_wait_time = 3
 Capybara.server = :puma, { Silent: true } # Pumaサーバーを使用

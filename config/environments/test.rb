@@ -68,6 +68,12 @@ Rails.application.configure do
   # NOTE: Rails7.2
   config.active_job.queue_adapter = :test
 
+  # Debug: selenium/webdriverを使ったシステムテスト時にSSLを無効化
+  config.force_ssl = false
+  config.assume_ssl = false
+  config.ssl_options = { hsts: false }
+  config.action_dispatch.default_headers.delete('Strict-Transport-Security')
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.bullet_logger = true

@@ -18,6 +18,21 @@ Capybara.register_driver :selenium_remote_chrome do |app|
   # NOTE: renderer disconnected が出る場合は以下を追加
   # chrome_options.add_argument('--disable-features=VizDisplayCompositor')
   # chrome_options.add_argument('--remote-debugging-port=9222')
+  #
+  # Debug: SSL / HSTS
+  chrome_options.add_argument('--disable-features=HttpsFirstMode,HttpsUpgrades,AutomaticHttpsUpgrades')
+  chrome_options.add_argument('--no-first-run')
+  chrome_options.add_argument('--no-default-browser-check')
+  chrome_options.add_argument('--user-data-dir=/tmp/chrome-profile')
+  chrome_options.add_argument("--user-data-dir=/tmp/chrome-profile-#{SecureRandom.hex(6)}")
+  #
+  chrome_options.add_argument('--allow-insecure-localhost=yes')  # Ignore TLS/SSL errors on localhost
+  chrome_options.add_argument('--ignore-certificate-errors=yes') # Ignore certificate related errors
+  #
+  chrome_options.add_argument('--ignore-ssl-errors=yes')
+  chrome_options.add_argument('--ssl-protocol=TLSv1')
+  chrome_options.add_argument('--debug=no')
+  chrome_options.add_argument('--load-images=no')
   Capybara::Selenium::Driver.new(app,
                                  browser: :remote,
                                  url: "http://#{ENV.fetch('SELENIUM_HOST', 'selenium')}:4444",
@@ -27,6 +42,16 @@ end
 RSpec.configure do |config|
   config.before(:each, type: :system) { driven_by :rack_test }
   config.before(:each, type: :system, js: true) { driven_by :selenium_remote_chrome }
+
+  # Debug: current_url
+  config.after(:each, type: :system, js: true) do |example|
+    next unless example.exception
+    begin
+      warn "[capybara] current_url=#{page.current_url}"
+    rescue => e
+      warn "[capybara] current_url fetch failed: #{e.class}: #{e.message}"
+    end
+  end
 
   config.after(:each, type: :system) do |example|
     # CIかSAVE_FAILURE_ARTIFACTSを明示した場合のみ保存

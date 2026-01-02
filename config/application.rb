@@ -26,5 +26,13 @@ module RailsTodo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+    # Debug: Disable SSL / HSTS
+    if Rails.env.test?
+      OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+      config.force_ssl = false
+      config.ssl_options = { hsts: false }
+      config.action_dispatch.default_headers.delete('Strict-Transport-Security')
+    end
   end
 end

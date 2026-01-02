@@ -38,6 +38,10 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       # CapybaraがSeleniumに接続するためのホスト名
       SELENIUM_HOST: selenium
+    networks:
+      default:
+        aliases:
+          - app.test # Capybaraのapp_hostで使用するホスト名（HSTS対策）
 
   selenium:
     image: selenium/standalone-chromium:4.39.0-20251212

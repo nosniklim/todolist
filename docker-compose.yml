@@ -38,11 +38,13 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       # CapybaraがSeleniumに接続するためのホスト名
       SELENIUM_HOST: selenium
+    networks:
+      default:
+        aliases:
+          - app.test # Capybaraのapp_hostで使用するホスト名（HSTS対策）
 
   selenium:
-    # FIXME: arm64環境のイメージに更新するまでplatformを指定して警告を回避
-    platform: linux/amd64
-    image: selenium/standalone-chrome:3.141.59
+    image: selenium/standalone-chromium:4.39.0-20251212
     shm_size: 2gb
     ports:
       - '4444:4444' # Seleniumのデフォルトポート

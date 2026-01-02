@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 require 'capybara'
-require 'selenium/webdriver'
 
 Capybara.default_max_wait_time = 3
 Capybara.server = :puma, { Silent: true } # Pumaサーバーを使用
-Capybara.app_host = 'http://app:3000'
+Capybara.server_host = '0.0.0.0'
+Capybara.server_port = 3001
+Capybara.always_include_port = true # Debug: port付きURLを常に使用する
+Capybara.app_host = 'http://app.test:3001'
 Capybara.save_path = 'tmp/capybara'
 
 # Seleniumの設定を登録

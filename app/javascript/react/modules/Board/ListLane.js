@@ -35,9 +35,12 @@ async function saveListOrder(ids) {
 
     if (!res.ok) {
       console.error('Failed to reorder', res.statusText);
+      return false;
     }
+    return true;
   } catch (e) {
     console.error('Failed to update list order', e);
+    return false;
   }
 }
 
@@ -110,7 +113,6 @@ export default function ListLane({ lists }) {
       setDragId(null);
       return;
     }
-
     setListLanes((currentListLanes) => {
       const oldIndex = currentListLanes.findIndex((ll) => String(ll.id) === String(active.id));
       const newIndex = currentListLanes.findIndex((ll) => String(ll.id) === String(over.id));
@@ -118,9 +120,14 @@ export default function ListLane({ lists }) {
 
       const newListLanes = arrayMove(currentListLanes, oldIndex, newIndex);
 
-      // 並び順を保存
-      const listIds = newListLanes.map((ll) => ll.id);
-      saveListOrder(listIds);
+      // 並び順を保存（非同期で失敗した場合は元に戻す）
+      (async (prev) => {
+        const listIds = newListLanes.map((ll) => ll.id);
+        const success = await saveListOrder(listIds);
+        if (!success) {
+          setListLanes(prev);
+        }
+      })(currentListLanes);
 
       return newListLanes;
     });

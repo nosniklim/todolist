@@ -119,8 +119,8 @@ export default function ListLane({ lists }) {
       const newListLanes = arrayMove(currentListLanes, oldIndex, newIndex);
 
       // 並び順を保存
-      const list_ids = newListLanes.map((ll) => ll.id);
-      saveListOrder(list_ids);
+      const listIds = newListLanes.map((ll) => ll.id);
+      saveListOrder(listIds);
 
       return newListLanes;
     });

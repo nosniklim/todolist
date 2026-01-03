@@ -38,7 +38,9 @@ async function saveListOrder(ids) {
 }
 
 function SortableList({ list }) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: list.id });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: list.id,
+  });
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -117,8 +119,16 @@ export default function ListLane({ lists }) {
   }
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-      <SortableContext items={listLanes.map((ll) => ll.id)} strategy={horizontalListSortingStrategy}>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
+      <SortableContext
+        items={listLanes.map((ll) => ll.id)}
+        strategy={horizontalListSortingStrategy}
+      >
         <div className="listWrapper">
           {listLanes.map((list) => (
             <SortableList key={list.id} list={list} />

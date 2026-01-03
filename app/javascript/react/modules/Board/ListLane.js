@@ -22,7 +22,7 @@ async function saveListOrder(ids) {
   try {
     const tokenEl = document.querySelector("meta[name='csrf-token']");
     const token = tokenEl ? tokenEl.content : '';
-    await fetch('/api/v1/lists/reorder', {
+    const res = await fetch('/api/v1/lists/reorder', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -32,6 +32,10 @@ async function saveListOrder(ids) {
       body: JSON.stringify({ list_ids: ids }),
       credentials: 'same-origin',
     });
+
+    if (!res.ok) {
+      console.error('Failed to reorder', res.statusText);
+    }
   } catch (e) {
     console.error('Failed to update list order', e);
   }

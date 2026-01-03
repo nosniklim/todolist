@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import {
   DndContext,
@@ -100,27 +100,33 @@ export default function ListLane({ lists }) {
 
   const sensors = useSensors(useSensor(PointerSensor));
 
-  function handleDragStart(event) {
+  const handleDragStart = useCallback((event) => {
     setDragId(event.active.id);
-  }
+  }, []);
 
-  function handleDragEnd(event) {
+  const handleDragEnd = useCallback((event) => {
     const { active, over } = event;
-    if (!over || String(active.id) === String(over.id)) return;
+    if (!over || String(active.id) === String(over.id)) {
+      setDragId(null);
+      return;
+    }
 
-    const oldIndex = listLanes.findIndex((ll) => String(ll.id) === String(active.id));
-    const newIndex = listLanes.findIndex((ll) => String(ll.id) === String(over.id));
-    if (oldIndex === -1 || newIndex === -1) return;
+    setListLanes((currentListLanes) => {
+      const oldIndex = currentListLanes.findIndex((ll) => String(ll.id) === String(active.id));
+      const newIndex = currentListLanes.findIndex((ll) => String(ll.id) === String(over.id));
+      if (oldIndex === -1 || newIndex === -1) return currentListLanes;
 
-    // Update local state
-    const newListLanes = arrayMove(listLanes, oldIndex, newIndex);
-    setListLanes(newListLanes);
+      const newListLanes = arrayMove(currentListLanes, oldIndex, newIndex);
 
-    // Update server state
-    const list_ids = newListLanes.map((ll) => ll.id);
-    saveListOrder(list_ids);
+      // 並び順を保存
+      const list_ids = newListLanes.map((ll) => ll.id);
+      saveListOrder(list_ids);
+
+      return newListLanes;
+    });
+
     setDragId(null);
-  }
+  }, []);
 
   return (
     <DndContext

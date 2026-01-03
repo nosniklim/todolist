@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import {
   DndContext,
+  DragOverlay,
   PointerSensor,
   useSensor,
   useSensors,
@@ -37,10 +38,11 @@ async function saveListOrder(ids) {
 }
 
 function SortableList({ list }) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: list.id });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: list.id });
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    opacity: isDragging ? 0.6 : 1,
   };
 
   return (
@@ -75,14 +77,26 @@ function SortableList({ list }) {
   );
 }
 
+function DragPreview({ list }) {
+  if (!list) return null;
+
+  // TODO: ドラッグ中のプレビュー表示
+  return null;
+}
+
 export default function ListLane({ lists }) {
   const [listLanes, setListLanes] = useState(lists || []);
+  const [dragId, setDragId] = useState(null);
 
   useEffect(() => {
     setListLanes(lists || []);
   }, [lists]);
 
   const sensors = useSensors(useSensor(PointerSensor));
+
+  function handleDragStart(event) {
+    setDragId(event.active.id);
+  }
 
   function handleDragEnd(event) {
     const { active, over } = event;
@@ -99,17 +113,23 @@ export default function ListLane({ lists }) {
     // Update server state
     const list_ids = newListLanes.map((ll) => ll.id);
     saveListOrder(list_ids);
+    setDragId(null);
   }
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={listLanes.map((i) => i.id)} strategy={horizontalListSortingStrategy}>
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <SortableContext items={listLanes.map((ll) => ll.id)} strategy={horizontalListSortingStrategy}>
         <div className="listWrapper">
           {listLanes.map((list) => (
             <SortableList key={list.id} list={list} />
           ))}
         </div>
       </SortableContext>
+      <DragOverlay>
+        {dragId ? (
+          <DragPreview list={listLanes.find((ll) => String(ll.id) === String(dragId))} />
+        ) : null}
+      </DragOverlay>
     </DndContext>
   );
 }

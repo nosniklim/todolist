@@ -113,24 +113,27 @@ export default function ListLane({ lists }) {
       setDragId(null);
       return;
     }
+
+    let prevSnapshot;
+    let newListLanes;
     setListLanes((currentListLanes) => {
+      prevSnapshot = currentListLanes;
       const oldIndex = currentListLanes.findIndex((ll) => String(ll.id) === String(active.id));
       const newIndex = currentListLanes.findIndex((ll) => String(ll.id) === String(over.id));
       if (oldIndex === -1 || newIndex === -1) return currentListLanes;
 
-      const newListLanes = arrayMove(currentListLanes, oldIndex, newIndex);
-
-      // 並び順を保存（非同期で失敗した場合は元に戻す）
-      (async (prev) => {
-        const listIds = newListLanes.map((ll) => ll.id);
-        const success = await saveListOrder(listIds);
-        if (!success) {
-          setListLanes(prev);
-        }
-      })(currentListLanes);
-
+      newListLanes = arrayMove(currentListLanes, oldIndex, newIndex);
       return newListLanes;
     });
+
+    // 並び順を保存（非同期で失敗した場合は元に戻す）
+    (async () => {
+      const listIds = (newListLanes || []).map((ll) => ll.id);
+      const success = await saveListOrder(listIds);
+      if (!success) {
+        setListLanes(prevSnapshot);
+      }
+    })();
 
     setDragId(null);
   }, []);

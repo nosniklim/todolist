@@ -2,6 +2,9 @@
   "name": "rails-todo",
   "private": true,
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.9.2",
     "@rails/activestorage": "^6.0.0",
@@ -10,6 +13,8 @@
     "bootstrap": "^5.0.2",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "sass": "^1.94.2",
     "turbolinks": "^5.2.0",
     "webpack": "^5.103.0",
@@ -21,6 +26,7 @@
     "@eslint/js": "^9.37.0",
     "@stylistic/stylelint-config": "^3",
     "@stylistic/stylelint-plugin": "^3",
+    "esbuild": "^0.27.2",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
@@ -44,7 +50,7 @@
     "lint:css:fix": "stylelint 'app/{assets,javascript}/stylesheets/**/*.{css,scss}' --fix",
     "fmt:check": "prettier --check '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'",
     "fmt:check:fix": "prettier --write '**/*.{js,jsx,json,md,css,scss,html,yml,yaml}'",
-    "build": "webpack --config webpack.config.cjs",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
     "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
